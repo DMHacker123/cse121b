@@ -56,3 +56,10 @@ myProfile.placesLived.forEach(place => {
     placesLivedList.appendChild(termElement);
     placesLivedList.appendChild(descriptionElement);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Your existing code here
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+    // ... other code ...
+});
+
