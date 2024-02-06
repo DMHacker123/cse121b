@@ -2,6 +2,8 @@
 
 
 /* Profile Object */
+/* Populate Profile Object with placesLived objects */
+
 let myProfile = {
     name: "Darwin Matos",
     photo: {
@@ -11,7 +13,6 @@ let myProfile = {
     favoriteFoods: ["Pizza", "Chocolate", "Sushi", "Apple", "Bananas", "Ice Cream"],
     hobbies: ["Reading", "Coding", "Basketball", "Swimming"],
 };
-/* Populate Profile Object with placesLived objects */
 myProfile.placesLived = [
     { place: "Santo Domingo, DR", length: "7 years" },
     { place: "San Cristobal", length: "8 years" }
@@ -20,7 +21,10 @@ myProfile.placesLived = [
 /* DOM Manipulation - Output */
 
 /* Name */
-document.querySelector("#name").innerHTML = `My name is <em>${myProfile.name}</em>`;
+const nameElement = document.querySelector("#name");
+if (nameElement) {
+    nameElement.innerHTML = `My name is <em>${myProfile.name}</em>`;
+}
 
 /* Photo with attributes */
 document.querySelector("#photo").src = myProfile.photo.src;
