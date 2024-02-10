@@ -8,7 +8,7 @@ let myProfile = {
     name: "Darwin Matos",
     photo: {
         src: "images/rsz_darwin_matos.jpg",
-        alt: "My Profiel Picture"
+        alt: "My Profile Picture"
 },
     favoriteFoods: ["Pizza", "Chocolate", "Sushi", "Apple", "Bananas", "Ice Cream"],
     hobbies: ["Reading", "Coding", "Basketball", "Swimming"],
