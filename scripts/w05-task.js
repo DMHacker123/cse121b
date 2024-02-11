@@ -39,7 +39,7 @@ const displayTemples = (temples) => {
 const getTemples = async () => {
   try {
     // Simulate fetching data from an API
-    const response = await fetch('https://byui-cse.github.io/cse121-ww-course/resources/temples.json');
+    const response = await fetch('https://byui-cse.github.io/cse121b-ww-course/resources/temples.json');
     const data = await response.json();
 
     // Assuming 'templeList' is a global variable, you can update it here
