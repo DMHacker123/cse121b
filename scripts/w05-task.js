@@ -128,3 +128,20 @@ document.getElementById("filtered").addEventListener("change", () => {
 
 // Step 7: Execute the getTemples function to fetch and display temple data
 getTemples();
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware to set Permissions-Policy header
+app.use((req, res, next) => {
+  res.setHeader('Permissions-Policy', 'interest-cohort=()');
+  next();
+});
+
+// Your other routes and middleware go here
+
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
+
