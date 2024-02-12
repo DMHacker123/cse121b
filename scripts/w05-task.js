@@ -7,7 +7,11 @@ const displayTemples = (temples) => {
   // Clear the existing content
   templesElement.innerHTML = "";
 
-
+  // Check if 'temples' is an array
+  if (!Array.isArray(temples)) {
+    console.error("Error: 'temples' is not an array.", temples);
+    return;
+  }
 
   temples.forEach((temple) => {
     // Log the content of each temple to the console
@@ -117,12 +121,10 @@ const filterTemples = (temples) => {
 
 // Step 6: Add a change event listener to the HTML element with an ID of "filtered"
 document.getElementById("filtered").addEventListener("change", () => {
-  // Call the filterTemples function with an arrow function result
-  filterTemples((temples) => {
-    // Send the templeList as the argument to the arrow function
-    return temples;
-  });
+  // Call the filterTemples function with the templeList array
+  filterTemples(templeList);
 });
+
 
 // Step 7: Execute the getTemples function to fetch and display temple data
 getTemples();
