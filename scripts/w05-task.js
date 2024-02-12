@@ -77,7 +77,7 @@ const filterTemples = (temples) => {
   // Call the reset function to clear the output
   reset();
 
-  // Check if 'temples' is an array
+  // Check if 'temples' is an array, if not, log an error
   if (!Array.isArray(temples)) {
     console.error("Error: 'temples' is not an array.", temples);
     return;
@@ -113,6 +113,7 @@ const filterTemples = (temples) => {
       console.warn("Unexpected filter value:", filter);
   }
 };
+
 
 
 
