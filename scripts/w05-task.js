@@ -97,21 +97,26 @@ const filterTemples = (temples) => {
       // Filter for temples where the location does not contain "Utah" as a string
       displayTemples(temples.filter(temple => !temple.location.includes("Utah")));
       break;
-      case "older":
-        // Filter for temples where the dedicated date is before 1950
-        const olderTemples = temples.filter(temple => new Date(temple.dedicated).getFullYear() < 1950);
-        displayTemples(olderTemples);
-        break;
-      
+    case "older":
+      // Filter for temples where the dedicated date is before 1950
+      const olderTemples = temples.filter(temple => new Date(temple.dedicated).getFullYear() < 1950);
+      displayTemples(olderTemples);
+      break;
     case "all":
       // No filter. Just use temples as the argument
       displayTemples(temples);
+      break;
+    case "":
+    case undefined:
+      // Handle the case when the filter value is empty or undefined
+      console.warn("Empty filter value. No filtering applied.");
       break;
     default:
       // Default case if none of the above matches
       console.warn("Unexpected filter value:", filter);
   }
 };
+
 
 
 // Step 6: Add a change event listener to the HTML element with an ID of "filtered"
