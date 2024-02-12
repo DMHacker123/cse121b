@@ -115,8 +115,6 @@ const filterTemples = (temples) => {
 };
 
 
-
-
 // Step 6: Add a change event listener to the HTML element with an ID of "filtered"
 document.getElementById("filtered").addEventListener("change", () => {
   // Call the filterTemples function with an arrow function result
