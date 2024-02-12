@@ -77,6 +77,12 @@ const filterTemples = (temples) => {
   // Call the reset function to clear the output
   reset();
 
+  // Check if 'temples' is an array
+  if (!Array.isArray(temples)) {
+    console.error("Error: 'temples' is not an array.", temples);
+    return;
+  }
+
   // Obtain the value of the HTML element with the ID of "filtered" (dropdown)
   const filter = document.getElementById("filtered").value;
 
@@ -107,6 +113,7 @@ const filterTemples = (temples) => {
       console.warn("Unexpected filter value:", filter);
   }
 };
+
 
 
 // Step 6: Add a change event listener to the HTML element with an ID of "filtered"
