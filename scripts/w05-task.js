@@ -7,11 +7,7 @@ const displayTemples = (temples) => {
   // Clear the existing content
   templesElement.innerHTML = "";
 
-  // Check if 'temples' is an array
-  if (!Array.isArray(temples)) {
-    console.error("Error: 'temples' is not an array.", temples);
-    return;
-  }
+
 
   temples.forEach((temple) => {
     // Log the content of each temple to the console
