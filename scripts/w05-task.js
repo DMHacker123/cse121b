@@ -14,6 +14,9 @@ const displayTemples = (temples) => {
   }
 
   temples.forEach((temple) => {
+    // Log the content of each temple to the console
+    console.log("Temple:", temple);
+
     // Create an HTML <article> element
     const articleElement = document.createElement("article");
 
@@ -45,7 +48,7 @@ const getTemples = async () => {
     const data = await response.json();
 
     // Assuming 'templeList' is a global variable, you can update it here
-    templeList = data;  // Use the full data
+    templeList = data.slice(0, 5);  // Use a subset of data for demonstration
 
     // Log the content of templeList to the console
     console.log(templeList);
@@ -58,6 +61,9 @@ const getTemples = async () => {
     console.error('Error fetching temple data:', error);
   }
 };
+
+// ...
+
 
 // Step 4: Function to reset or clear the output
 const reset = () => {
@@ -93,12 +99,17 @@ const filterTemples = (temples) => {
       break;
     case "older":
       // Filter for temples where the dedicated date is before 1950
-      const olderTemples = temples.filter(temple => new Date(temple.dedicated) < new Date(1950, 0, 1));
+      const olderTemples = temples.filter(temple => new Date(temple.dedicated).getFullYear() < 1950);
       displayTemples(olderTemples);
       break;
     case "all":
       // No filter. Just use temples as the argument
       displayTemples(temples);
+      break;
+    case "":
+    case undefined:
+      // Handle the case when the filter value is empty or undefined
+      console.warn("Empty filter value. No filtering applied.");
       break;
     default:
       // Default case if none of the above matches
@@ -106,43 +117,15 @@ const filterTemples = (temples) => {
   }
 };
 
-// Step 6: Function to sort temples based on the selected option
-const sortBy = (temples, sortByOption) => {
-  // Check if 'temples' is an array
-  if (!Array.isArray(temples)) {
-    console.error("Error: 'temples' is not an array.", temples);
-    return [];
-  }
 
-  // Check if 'sortByOption' is a valid option
-  if (typeof sortByOption !== 'string') {
-    console.error("Error: 'sortByOption' should be a string.", sortByOption);
-    return [];
-  }
 
-  switch (sortByOption) {
-    case 'templeName':
-      // Sort by temple name in ascending order
-      return temples.slice().sort((a, b) => a.templeName.localeCompare(b.templeName));
-    case 'dedicated':
-      // Sort by dedicated date in ascending order
-      return temples.slice().sort((a, b) => new Date(a.dedicated) - new Date(b.dedicated));
-    case 'area':
-      // Sort by area in ascending order
-      return temples.slice().sort((a, b) => a.area - b.area);
-    default:
-      // Default case if sortByOption is not recognized
-      console.warn("Unexpected sortByOption:", sortByOption);
-      return temples; // Return the original array if sortByOption is not recognized
-  }
-};
+// Step 6: Add a change event listener to the HTML element with an ID of "filtered"
+document.getElementById("filtered").addEventListener("change", () => {
+  // Call the filterTemples function with the templeList array
+  filterTemples(templeList);
+});
 
-// Example usage of sortBy:
-// Sort by temple name and display the sorted temples
-const sortedTemplesByName = sortBy(templeList, 'templeName');
-displayTemples(sortedTemplesByName);
-
-// ...
 
 // Step 7: Execute the getTemples function to fetch and display temple data
 getTemples();
+
