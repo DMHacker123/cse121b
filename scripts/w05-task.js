@@ -97,11 +97,12 @@ const filterTemples = (temples) => {
       // Filter for temples where the location does not contain "Utah" as a string
       displayTemples(temples.filter(temple => !temple.location.includes("Utah")));
       break;
-    case "older":
-      // Filter for temples where the dedicated date is before 1950
-      const olderTemples = temples.filter(temple => new Date(temple.dedicated) < new Date(1950, 0, 1));
-      displayTemples(olderTemples);
-      break;
+      case "older":
+        // Filter for temples where the dedicated date is before 1950
+        const olderTemples = temples.filter(temple => new Date(temple.dedicated).getFullYear() < 1950);
+        displayTemples(olderTemples);
+        break;
+      
     case "all":
       // No filter. Just use temples as the argument
       displayTemples(temples);
