@@ -80,6 +80,9 @@ const filterTemples = (temples) => {
   // Obtain the value of the HTML element with the ID of "filtered" (dropdown)
   const filter = document.getElementById("filtered").value;
 
+  // Debugging: Log the filter value
+  console.log("Filter value:", filter);
+
   // Use a switch statement based on the filter value
   switch (filter) {
     case "utah":
@@ -104,6 +107,7 @@ const filterTemples = (temples) => {
       console.warn("Unexpected filter value:", filter);
   }
 };
+
 
 // Step 6: Add a change event listener to the HTML element with an ID of "filtered"
 document.getElementById("filtered").addEventListener("change", () => {
