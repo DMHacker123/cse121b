@@ -62,13 +62,12 @@ const getTemples = async () => {
   }
 };
 
-// ...
-
-
 // Step 4: Function to reset or clear the output
 const reset = () => {
   templesElement.innerHTML = "";  // Clear the content
 };
+
+// ...
 
 // Step 5: Function to filter temples based on the dropdown value
 const filterTemples = (temples) => {
@@ -86,6 +85,14 @@ const filterTemples = (temples) => {
 
   // Debugging: Log the filter value
   console.log("Filter value:", filter);
+
+  // Handle the case when the filter value is empty or undefined
+  if (filter === "" || filter === undefined) {
+    console.warn("Empty filter value. No filtering applied.");
+    // Display all temples
+    displayTemples(temples);
+    return;
+  }
 
   // Use a switch statement based on the filter value
   switch (filter) {
@@ -106,18 +113,11 @@ const filterTemples = (temples) => {
       // No filter. Just use temples as the argument
       displayTemples(temples);
       break;
-    case "":
-    case undefined:
-      // Handle the case when the filter value is empty or undefined
-      console.warn("Empty filter value. No filtering applied.");
-      break;
     default:
       // Default case if none of the above matches
       console.warn("Unexpected filter value:", filter);
   }
 };
-
-
 
 // Step 6: Add a change event listener to the HTML element with an ID of "filtered"
 document.getElementById("filtered").addEventListener("change", () => {
@@ -125,7 +125,42 @@ document.getElementById("filtered").addEventListener("change", () => {
   filterTemples(templeList);
 });
 
+// Step 7: Function to sort temples based on selection
+const sortBy = (temples, selection) => {
+  switch (selection) {
+    case "name":
+      // Sort temples by name
+      return temples.slice().sort((a, b) => a.templeName.localeCompare(b.templeName));
+    case "location":
+      // Sort temples by location
+      return temples.slice().sort((a, b) => a.location.localeCompare(b.location));
+    case "dedicated":
+      // Sort temples by dedicated date
+      return temples.slice().sort((a, b) => new Date(a.dedicated) - new Date(b.dedicated));
+    default:
+      console.warn("Unexpected sort selection:", selection);
+      return temples;
+  }
+};
+// Example usage:
+// Call sortBy function with the templeList array and the desired selection
+const sortedTemples = sortBy(templeList, "name");
 
-// Step 7: Execute the getTemples function to fetch and display temple data
+// Display the sorted temples using displayTemples function
+displayTemples(sortedTemples);
+
+// Step 8: Add a change event listener to the HTML element with an ID of "sort"
+document.getElementById("sort").addEventListener("change", (event) => {
+  // Get the selected value from the dropdown
+  const selectedSort = event.target.value;
+
+  // Call the sortBy function with the templeList array and the selectedSort value
+  const sortedTemples = sortBy(templeList, selectedSort);
+
+  // Display the sorted temples using displayTemples function
+  displayTemples(sortedTemples);
+});
+
+// Step 9: Execute the getTemples function to fetch and display temple data
 getTemples();
 
