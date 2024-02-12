@@ -40,8 +40,6 @@ const displayTemples = (temples) => {
   });
 };
 
-
-
 // Step 3: Function to get temples data asynchronously
 const getTemples = async () => {
   try {
