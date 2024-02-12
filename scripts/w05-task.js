@@ -7,6 +7,12 @@ const displayTemples = (temples) => {
   // Clear the existing content
   templesElement.innerHTML = "";
 
+  // Check if 'temples' is an array
+  if (!Array.isArray(temples)) {
+    console.error("Error: 'temples' is not an array.", temples);
+    return;
+  }
+
   temples.forEach((temple) => {
     // Log the content of each temple to the console
     console.log("Temple:", temple);
@@ -33,6 +39,7 @@ const displayTemples = (temples) => {
     templesElement.appendChild(articleElement);
   });
 };
+
 
 
 // Step 3: Function to get temples data asynchronously
