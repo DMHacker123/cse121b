@@ -50,6 +50,8 @@ const getTemples = async () => {
 
     // Call the displayTemples function to display the fetched temples
     displayTemples(templeList);
+    // Call filterTemples after fetching and processing data
+    filterTemples(templeList);
   } catch (error) {
     console.error('Error fetching temple data:', error);
   }
