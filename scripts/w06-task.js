@@ -28,7 +28,7 @@ const displayCars = (cars) => {
 
     // Create an HTML <img> element
     const imgElement = document.createElement("img");
-    imgElement.src = car.img_url;
+    imgElement.src = 'images/' + car.imageFileName; // Adjust the path as needed
     imgElement.alt = car.name;
 
     // Append the <h3> element to the <article> element
@@ -47,7 +47,7 @@ const displayCars = (cars) => {
 const getCars = async () => {
   try {
     // Simulate fetching data from an API
-    const response = await fetch('https://private-anon-7db9d86f78-carsapi1.apiary-mock.com/manufacturers');
+    const response = await fetch('images/chrysler-logo-2009-download.json');
     const data = await response.json();
 
     // Assuming 'carList' is a global variable, you can update it here
@@ -55,7 +55,6 @@ const getCars = async () => {
 
     // Log the content of carList to the console
     console.log(carList);
-console.log("Car Image URL:", car.img_url);
 
     // Call the displayCars function to display the fetched cars
     displayCars(carList);
