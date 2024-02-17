@@ -48,7 +48,7 @@ const getTemples = async () => {
     const data = await response.json();
 
     // Assuming 'templeList' is a global variable, you can update it here
-    templeList = data.slice(0, 5);  // Use a subset of data for demonstration
+    templeList = data.slice();  // Use a subset of data for demonstration
 
     // Log the content of templeList to the console
     console.log(templeList);

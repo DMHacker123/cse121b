@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSE 121b | W06: Car Manufacturers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+  <nav>
+    <ul id="menu">
+      <li><a id="toggleMenu">&equiv;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="w01-task.html">W1 Task</a></li>
+      <li><a href="w03-task.html">W3 Task</a></li>
+      <li><a href="w04-task.html">W4 Task</a></li>
+      <li><a href="w05-task.html">W5 Task</a></li>
+      <li><a href="w06-task.html" class="active">W6 Task</a></li>
+      <li><a href="project.html">Project</a></li>
+    </ul>
+  </nav>
+  <main id="gridly">
+    <h1>W06: Car Manufacturers</h1>
+    <h2>Fetch(): Some Car Manufacturers</h2>
+
+    <select id="filter">
+      <option value="" disabled selected>Filter Cars</option>
+      <option value="chrysler">Chrysler</option>
+      <option value="honda">Honda</option>
+      <option value="mercedes-benz">Mercedes-Benz</option>
+      <!-- Add more options based on your car data -->
+      <option value="all">No Filter</option>
+
+    </select>
+    <!-- Add the 'sort' ID to the select element -->
+<select id="sort">
+  <option value="name">Sort by Name</option>
+  <option value="horsepower">Sort by Horsepower</option>
+  <option value="price">Sort by Price</option>
+</select>
+
+    <div id="cars"></div>
+  </main>
+  <footer>
+    &copy;<span id="year"></span> | Week 06 - Fetching Car Data | CSE 121b
+  </footer>
+  <script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+  </script>
+  <script defer src="../scripts/w06-task.js"></script>
+
+</body>
+
+</html>
